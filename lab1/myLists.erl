@@ -2,15 +2,21 @@
 -export([contains/2, duplicateElements/1, sumFloats/1]).
 
 contains([], _) ->
-    false;
+	false;
 contains([Element|_], Element) ->
-    true;
+	true;
 contains([_|T], Element) ->
-    contains(T, Element).
+	contains(T, Element).
 
 duplicateElements(List) ->
-    lists:flatmap(fun(X) -> [X,X] end, List).
+	lists:flatmap(fun(X) -> [X,X] end, List).
 
 sumFloats(List)->
-    lists:foldl(fun(X,Y) -> X+Y end, 0, lists:filter(fun(X) -> is_float(X) end, List)).
-    
+	sumFloats2(List, 0).
+
+sumFloats2([H|T], Acc) when is_float(H) ->
+	sumFloats2(T, Acc + H);
+sumFloats2([_|T], Acc) ->
+	sumFloats2(T, Acc);
+sumFloats2(_, Acc) ->
+	Acc.
