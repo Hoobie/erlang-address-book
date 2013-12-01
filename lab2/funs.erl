@@ -41,3 +41,5 @@ sum_rems() ->
 	List = generate(),
 	Fun = fun(X) -> sum_digits(X) rem 3 == 0 end,
 	lists:filter(Fun, List).
+
+% * Factorial = fun(F, X) -> case X of 0 -> 1; _ -> X * F(F, X-1) end end.
