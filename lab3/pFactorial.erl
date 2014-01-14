@@ -4,6 +4,12 @@
 factorial(0) -> 1;
 factorial(N) -> factorial(N-1) * N.
 
+get_factorial(N) ->
+        spawn(?MODULE, concurrent_factorial, [N, self()]),
+        receive
+                X -> X
+        end.
+
 get_factorial_list(List, Pid) ->
         Pid ! [factorial(N) || N <- List].
 
@@ -24,3 +30,9 @@ listener(N, Pid, Lists) ->
                 L -> L
         end,
         listener(N-1, Pid, Lists ++ L).
+
+sequential(N) ->
+        [factorial(X) || X <- lists:seq(0, N)].
+
+stupid_concurrent(N) ->
+        [get_factorial(X) || X <- lists:seq(0, N)].
