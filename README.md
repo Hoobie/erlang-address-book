@@ -1,4 +1,4 @@
-erlang-lab
+erlang-address-book
 ==========
 
-Kody źródłowe na laboratoria z Erlanga 2013 (II rok Informatyki, WIEiT, AGH)
+Erlang OTP address book for Programming in Erlang, AGH 2013
