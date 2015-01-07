@@ -1,1 +1,0 @@
--record(address, {name, phone=[], email=[]}).
